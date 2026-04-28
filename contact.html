@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yiran Shu — Contact</title>
+    <meta name="description" content="Contact Yiran Shu — message, collaborations, and inquiries." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="archive-page archive-page--sub">
+      <header class="archive-header">
+        <a href="index.html" class="artist-name-link"><h1 class="artist-name">Yiran Shu</h1></a>
+        <nav class="archive-nav" aria-label="Primary">
+          <a href="about.html" class="archive-nav__link">About</a>
+          <span class="archive-nav__sep" aria-hidden="true"> · </span>
+          <a href="choreography.html" class="archive-nav__link">Choreography</a>
+          <span class="archive-nav__sep" aria-hidden="true"> · </span>
+          <a href="modeling.html" class="archive-nav__link">Modeling</a>
+          <span class="archive-nav__sep" aria-hidden="true"> · </span>
+          <a href="dance-film.html" class="archive-nav__link">Dance film</a>
+          <span class="archive-nav__sep" aria-hidden="true"> · </span>
+          <a href="acting.html" class="archive-nav__link">Acting</a>
+          <span class="archive-nav__sep" aria-hidden="true"> · </span>
+          <a href="contact.html" class="archive-nav__link archive-nav__link--current">Contact</a>
+        </nav>
+      </header>
+
+      <main class="archive-panel">
+        <div class="subpage-inner subpage-inner--film-detail">
+          <section class="subpage-block">
+            <h1>Contact</h1>
+
+            <form
+              class="contact-form"
+              action="https://formsubmit.co/yiranshu11@gmail.com"
+              method="POST"
+            >
+              <input type="hidden" name="_subject" value="[yirandance] New site message" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value="contact.html?sent=1" />
+
+              <label class="contact-form__label" for="contact-name">Name</label>
+              <input
+                class="contact-form__input"
+                id="contact-name"
+                type="text"
+                name="name"
+                required
+                autocomplete="name"
+                placeholder="Your name"
+              />
+
+              <label class="contact-form__label" for="contact-email">Email</label>
+              <input
+                class="contact-form__input"
+                id="contact-email"
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="you@example.com"
+              />
+
+              <label class="contact-form__label" for="contact-message">Message</label>
+              <textarea
+                class="contact-form__textarea"
+                id="contact-message"
+                name="message"
+                required
+                rows="7"
+                placeholder="Write your message…"
+              ></textarea>
+
+              <button class="contact-form__submit" type="submit">Send message</button>
+            </form>
+
+            <p class="contact-form__fineprint" role="status" data-sent-banner hidden>
+              Thanks — your message was sent. I’ll get back to you when I can.
+            </p>
+          </section>
+        </div>
+      </main>
+
+      <footer class="archive-footer">
+        <a href="https://www.instagram.com/yiranshu/" target="_blank" rel="noreferrer">Instagram</a>
+        <span>·</span>
+        <a href="https://www.youtube.com/@yiranshu11" target="_blank" rel="noreferrer">YouTube</a>
+      </footer>
+    </div>
+    <script>
+      if (new URLSearchParams(location.search).get("sent") === "1") {
+        var el = document.querySelector("[data-sent-banner]");
+        if (el) el.hidden = false;
+      }
+    </script>
+  </body>
+</html>

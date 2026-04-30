@@ -147,6 +147,11 @@ a {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+  display: inline-block;
+  padding: 8px 10px;
+  margin: -8px -2px;
+  line-height: 1.2;
+  border-radius: 6px;
 }
 
 .archive-titles__part--active {
@@ -262,10 +267,15 @@ a {
   transition: opacity 0.2s ease;
   text-decoration: none;
   color: inherit;
+  display: inline-block;
+  padding: 8px 10px;
+  margin: -8px -2px;
+  line-height: 1.2;
+  border-radius: 6px;
 }
 
 .archive-nav__link:hover {
-  opacity: 0.85;
+  opacity: 1;
 }
 
 .archive-nav__link--current {
@@ -343,6 +353,13 @@ a {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.subpage-block--hero-video .video-frame {
+  width: min(96vw, 1320px);
+  margin-left: calc(50% - min(48vw, 660px));
+  margin-right: calc(50% - min(48vw, 660px));
+  border-radius: 0;
 }
 
 /* Dance film — homepage-style reel cards */
@@ -500,6 +517,10 @@ a.film-card--link .film-card__title {
   max-width: 640px;
 }
 
+.subpage-inner--film-detail.subpage-inner--film-hero {
+  max-width: min(96vw, 1320px);
+}
+
 .subpage-kicker {
   font-size: 11px;
   letter-spacing: 0.16em;
@@ -592,6 +613,51 @@ a.film-card--link .film-card__title {
   border-color: rgba(255, 255, 255, 0.38);
 }
 
+.subpage-photo-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.subpage-photo-grid img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subpage-photo-collage {
+  margin-top: 16px;
+  margin-left: clamp(-22px, -4vw, -42px);
+  margin-right: clamp(-22px, -4vw, -42px);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: clamp(90px, 12vw, 170px);
+  gap: clamp(8px, 1.2vw, 14px);
+}
+
+.subpage-photo-collage img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 0;
+  border: none;
+}
+
+.subpage-photo-collage img.span-3 { grid-column: span 3; }
+.subpage-photo-collage img.span-4 { grid-column: span 4; }
+.subpage-photo-collage img.span-5 { grid-column: span 5; }
+.subpage-photo-collage img.span-6 { grid-column: span 6; }
+.subpage-photo-collage img.span-7 { grid-column: span 7; }
+.subpage-photo-collage img.span-8 { grid-column: span 8; }
+.subpage-photo-collage img.span-12 { grid-column: span 12; }
+.subpage-photo-collage img.tall { grid-row: span 3; }
+.subpage-photo-collage img.wide { grid-row: span 2; }
+
 /* Contact form */
 .contact-form {
   display: flex;
@@ -679,5 +745,50 @@ a.film-card--link .film-card__title {
 
 .contact-form__fineprint[hidden] {
   display: none;
+}
+
+@media (max-width: 900px) {
+  .subpage-photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .subpage-photo-collage {
+    margin-left: -18px;
+    margin-right: -18px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-rows: 100px;
+    gap: 8px;
+  }
+
+  .subpage-photo-collage img.span-3 { grid-column: span 3; }
+  .subpage-photo-collage img.span-4 { grid-column: span 3; }
+  .subpage-photo-collage img.span-5 { grid-column: span 6; }
+  .subpage-photo-collage img.span-6 { grid-column: span 6; }
+  .subpage-photo-collage img.span-7 { grid-column: span 6; }
+  .subpage-photo-collage img.span-8 { grid-column: span 6; }
+  .subpage-photo-collage img.span-12 { grid-column: span 6; }
+}
+
+.subpage-photo-strip {
+  margin-top: 14px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+
+.subpage-photo-strip img {
+  flex: 0 0 clamp(220px, 36vw, 460px);
+  height: clamp(300px, 62vh, 700px);
+  object-fit: cover;
+  display: block;
+  scroll-snap-align: start;
 }
 

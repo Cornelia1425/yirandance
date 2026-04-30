@@ -19,6 +19,85 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Force circle cursor globally and prevent fallback arrow flashes. */
+html,
+body,
+*,
+*::before,
+*::after {
+  cursor: none !important;
+}
+
+.video-frame,
+.video-frame iframe {
+  cursor: none !important;
+}
+
+body.custom-circle-cursor,
+body.custom-circle-cursor a,
+body.custom-circle-cursor button,
+body.custom-circle-cursor #archiveCanvas {
+  cursor: none !important;
+}
+
+.cursor-circle {
+  display: none;
+}
+
+.cursor-circle.cursor-circle--active {
+  display: none;
+}
+
+.cursor-aura {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate3d(-9999px, -9999px, 0);
+  z-index: 9998;
+  opacity: 0.82;
+  mix-blend-mode: screen;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.1) 38%, rgba(255, 255, 255, 0) 72%);
+  filter: blur(0.2px);
+  box-shadow:
+    0 0 24px rgba(255, 255, 255, 0.55),
+    0 0 52px rgba(175, 205, 255, 0.25);
+  transition:
+    opacity 0.25s ease,
+    transform 0.12s linear;
+}
+
+.cursor-aura.cursor-aura--active {
+  opacity: 1;
+  box-shadow:
+    0 0 28px rgba(255, 255, 255, 0.7),
+    0 0 68px rgba(186, 214, 255, 0.36);
+}
+
+.cursor-trail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: calc(13px - var(--trail-index) * 1.6px);
+  height: calc(13px - var(--trail-index) * 1.6px);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate3d(-9999px, -9999px, 0);
+  z-index: 9997;
+  mix-blend-mode: screen;
+  opacity: calc(0.35 - var(--trail-index) * 0.045);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.12) 56%, rgba(255, 255, 255, 0) 76%);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.36);
+  transition: opacity 0.2s ease;
+}
+
+.cursor-trail.cursor-trail--active {
+  opacity: calc(0.55 - var(--trail-index) * 0.055);
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -48,7 +127,7 @@ a {
 }
 
 .archive-titles {
-  margin-top: clamp(20px, 3.4vw, 34px);
+  margin-top: 8px;
   font-size: 12px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -82,7 +161,7 @@ a {
 
 /* Dance film hub: primary row = site sections (same as index); second row = individual films, smaller. */
 .archive-titles--films {
-  margin-top: clamp(4px, 0.85vw, 8px);
+  margin-top: 8px;
   font-size: 10px;
   letter-spacing: 0.18em;
   color: #9a9aa8;

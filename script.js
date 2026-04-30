@@ -4,6 +4,7 @@ const canvas = document.getElementById("archiveCanvas");
 const viewport = document.getElementById("archiveViewport");
 const titlesEl = document.getElementById("archiveTitles");
 const sectionTitlesEl = document.getElementById("archiveSectionTitles");
+const footerEl = document.querySelector(".archive-footer");
 
 if (canvas && viewport) {
   const scene = new THREE.Scene();
@@ -401,6 +402,13 @@ if (canvas && viewport) {
     const targetRotX = GROUP_BASE_X - py * GROUP_ROT_X_MAX;
     group.rotation.y = THREE.MathUtils.lerp(group.rotation.y, targetRotY, 0.045);
     group.rotation.x = THREE.MathUtils.lerp(group.rotation.x, targetRotX, 0.045);
+
+    // Keep title/header static; only 3D stack responds to pointer.
+    if (footerEl) {
+      const fx = px * -4;
+      const fy = py * 3;
+      footerEl.style.transform = `translate3d(${fx.toFixed(2)}px, ${fy.toFixed(2)}px, 0)`;
+    }
 
     const posK = 0.2;
     const hRaw = visualHoverCard?.userData?.stackIndex;

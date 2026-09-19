@@ -38,7 +38,7 @@ function initCustomCursor() {
     });
   });
   document.addEventListener("mouseover", (event) => {
-    const isClickable = Boolean(event.target?.closest("a, button, #archiveCanvas"));
+    const isClickable = Boolean(event.target?.closest("a, button, summary, #archiveCanvas"));
     auraCursor.classList.toggle("cursor-aura--active", isClickable);
     trailEls.forEach((el) => {
       el.classList.toggle("cursor-trail--active", isClickable);

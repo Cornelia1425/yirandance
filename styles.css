@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
 *,
 *::before,
 *::after {
@@ -12,8 +14,7 @@ body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, system-ui, "SF Pro Text",
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: "Space Grotesk", system-ui, sans-serif;
   background: #000000;
   color: #f5f5f5;
   -webkit-font-smoothing: antialiased;
@@ -117,21 +118,25 @@ a {
   z-index: 2;
   position: relative;
   pointer-events: none;
+  font-family: "Space Grotesk", system-ui, sans-serif;
 }
 
 .artist-name {
-  font-size: clamp(28px, 5vw, 56px);
+  font-size: clamp(22px, 3.2vw, 34px);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-weight: 550;
+  font-weight: 700;
+  font-family: "Space Grotesk", system-ui, sans-serif;
 }
 
 .archive-titles {
-  margin-top: 8px;
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #b8b8c2;
+  margin-top: 10px;
+  font-size: clamp(17px, 2.3vw, 22px);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  font-weight: 700;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  color: #ececf4;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -142,8 +147,12 @@ a {
 }
 
 .archive-titles__part {
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
+  opacity: 0.72;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease,
+    letter-spacing 0.2s ease;
+  font-weight: 700;
   color: inherit;
   text-decoration: none;
   cursor: pointer;
@@ -154,12 +163,24 @@ a {
   border-radius: 6px;
 }
 
-.archive-titles__part--active {
+.archive-titles:has(.archive-titles__part--active) .archive-titles__part {
+  opacity: 0.38;
+}
+
+.archive-titles__part--active,
+.archive-titles__part--current {
   opacity: 1 !important;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.archive-titles:has(.archive-titles__part--current) .archive-titles__part {
+  opacity: 0.38;
 }
 
 .archive-titles__sep {
-  opacity: 0.5;
+  opacity: 0.72;
   user-select: none;
   pointer-events: none;
 }
@@ -167,13 +188,13 @@ a {
 /* Dance film hub: primary row = site sections (same as index); second row = individual films, smaller. */
 .archive-titles--films {
   margin-top: 8px;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  color: #9a9aa8;
+  font-size: clamp(13px, 1.5vw, 16px);
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  color: #c8c8d4;
 }
 
 .archive-titles__part--current {
-  opacity: 1 !important;
   cursor: default;
 }
 
@@ -235,6 +256,7 @@ a {
 /* Subpages — same shell as homepage archive */
 .archive-page--sub .archive-header {
   pointer-events: auto;
+  margin-bottom: 48px;
 }
 
 .artist-name-link {
@@ -249,11 +271,13 @@ a {
 }
 
 .archive-nav {
-  margin-top: 8px;
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #b8b8c2;
+  margin-top: 10px;
+  font-size: clamp(17px, 2.3vw, 22px);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  font-weight: 700;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  color: #ececf4;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -263,8 +287,11 @@ a {
 }
 
 .archive-nav__link {
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
+  opacity: 0.72;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease,
+    letter-spacing 0.2s ease;
   text-decoration: none;
   color: inherit;
   display: inline-block;
@@ -272,18 +299,27 @@ a {
   margin: -8px -2px;
   line-height: 1.2;
   border-radius: 6px;
+  font-weight: 700;
+}
+
+.archive-nav:has(.archive-nav__link--current) .archive-nav__link {
+  opacity: 0.38;
 }
 
 .archive-nav__link:hover {
   opacity: 1;
+  color: #ffffff;
 }
 
 .archive-nav__link--current {
   opacity: 1 !important;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
 }
 
 .archive-nav__sep {
-  opacity: 0.5;
+  opacity: 0.72;
   pointer-events: none;
   user-select: none;
 }
@@ -308,7 +344,7 @@ a {
 }
 
 .subpage-inner h1 {
-  font-size: 22px;
+  font-size: 37px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 14px;
@@ -317,7 +353,7 @@ a {
 }
 
 .subpage-inner h2 {
-  font-size: 14px;
+  font-size: 24px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -325,13 +361,13 @@ a {
 }
 
 .subpage-inner p {
-  font-size: 14px;
+  font-size: 24px;
   line-height: 1.75;
   color: #c8c8d6;
 }
 
 .subpage-inner .meta-line {
-  font-size: 11px;
+  font-size: 19px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #8e8e9c;
@@ -345,6 +381,10 @@ a {
   height: 0;
   border-radius: 12px;
   overflow: hidden;
+}
+
+.subpage-block .video-frame + .meta-line {
+  margin-top: 28px;
 }
 
 .subpage-inner .video-frame iframe {
@@ -426,7 +466,7 @@ a.film-card--link .film-card__title {
   background: linear-gradient(145deg, #d8344f 0%, #3d121f 100%);
 }
 
-.film-card--careless .film-card__gradient {
+.film-card--within .film-card__gradient {
   background: linear-gradient(145deg, #6b8cae 0%, #1e2c38 100%);
 }
 
@@ -517,12 +557,67 @@ a.film-card--link .film-card__title {
   max-width: 640px;
 }
 
+.subpage-inner--film-hero {
+  max-width: min(96vw, 1320px);
+}
+
+.subpage-inner--film-hero > .subpage-block:not(.subpage-block--hero-video) {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .subpage-inner--film-detail.subpage-inner--film-hero {
   max-width: min(96vw, 1320px);
 }
 
+.film-awards .meta-line {
+  margin-top: 22px;
+}
+
+.film-awards .meta-line:first-child {
+  margin-top: 0;
+}
+
+.film-credits {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.film-credits div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-size: 22px;
+  line-height: 1.5;
+  margin: 0 0 10px;
+}
+
+.film-credits dt,
+.film-credits dd {
+  display: block;
+}
+
+.film-credits dt {
+  letter-spacing: 0;
+  text-transform: none;
+  color: #5c5c66;
+  flex: 0 1 auto;
+}
+
+.film-credits dd {
+  margin: 0;
+  color: #b8b8c4;
+  text-align: right;
+  flex: 0 1 auto;
+}
+
 .subpage-kicker {
-  font-size: 11px;
+  font-size: 19px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin-bottom: 14px;
@@ -540,7 +635,7 @@ a.film-card--link .film-card__title {
 }
 
 .film-detail-tagline {
-  font-size: 16px;
+  font-size: 27px;
   line-height: 1.65;
   color: #c8c8d6;
   margin-top: 10px;
@@ -553,7 +648,7 @@ a.film-card--link .film-card__title {
 }
 
 .film-detail-facts li {
-  font-size: 14px;
+  font-size: 24px;
   line-height: 1.65;
   color: #c4c4d4;
   padding: 10px 0;
@@ -564,7 +659,7 @@ a.film-card--link .film-card__title {
   display: inline-block;
   min-width: 8.75rem;
   margin-right: 10px;
-  font-size: 10px;
+  font-size: 17px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #8e8e9c;
@@ -582,7 +677,7 @@ a.film-card--link .film-card__title {
 }
 
 .film-detail-note {
-  font-size: 12px;
+  font-size: 20px;
   line-height: 1.6;
   color: #9a9aaa;
   margin-bottom: 20px;
@@ -597,7 +692,7 @@ a.film-card--link .film-card__title {
 
 .film-detail-ext-cta {
   display: inline-block;
-  font-size: 11px;
+  font-size: 19px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 12px 20px;
@@ -668,7 +763,7 @@ a.film-card--link .film-card__title {
 
 .contact-form__label {
   display: block;
-  font-size: 10px;
+  font-size: 17px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #8e8e9c;
@@ -685,7 +780,7 @@ a.film-card--link .film-card__title {
   width: 100%;
   box-sizing: border-box;
   padding: 12px 14px;
-  font-size: 14px;
+  font-size: 24px;
   font-family: inherit;
   color: #f0f0f6;
   background: rgba(0, 0, 0, 0.35);
@@ -790,5 +885,205 @@ a.film-card--link .film-card__title {
   object-fit: cover;
   display: block;
   scroll-snap-align: start;
+}
+
+.subpage-photo-strip--contain {
+  justify-content: safe center;
+}
+
+.subpage-photo-strip--contain img {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+}
+
+/* Press — Kathy Meng-style year / title / outlet list */
+.archive-page--press .archive-header {
+  margin-bottom: 56px;
+}
+
+.subpage-inner--press {
+  max-width: min(94vw, 1080px);
+  padding-top: 20px;
+}
+
+.press-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.press-list > .press-row,
+.press-group {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.press-list > .press-row:first-child,
+.press-list > .press-group:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.press-row {
+  display: grid;
+  grid-template-columns: 5.25rem minmax(0, 1fr) minmax(8.5rem, max-content);
+  gap: 12px 28px;
+  align-items: center;
+  padding: 18px 10px;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.18s ease;
+}
+
+a.press-row:hover,
+.press-group:hover .press-row,
+.press-group:focus-within .press-row {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.press-year {
+  font-size: 24px;
+  letter-spacing: 0.08em;
+  color: #c8c8d4;
+  font-weight: 600;
+}
+
+.press-title {
+  font-size: 26px;
+  line-height: 1.45;
+  font-weight: 500;
+  color: #f2f2f8;
+  transition: font-weight 0.15s ease;
+}
+
+a.press-row:hover .press-title,
+.press-group:hover .press-title,
+.press-group:focus-within .press-title {
+  font-weight: 800;
+}
+
+.press-outlet {
+  display: block;
+  justify-self: stretch;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.4;
+  font-style: italic;
+  font-weight: 500;
+  text-align: right;
+  color: rgba(232, 232, 244, 0.72);
+  hyphens: auto;
+}
+
+.press-arrow {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-left: 8px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: translateY(1px) rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+a.press-row:hover .press-arrow {
+  opacity: 1;
+}
+
+.press-group {
+  position: relative;
+}
+
+.press-group:hover,
+.press-group:focus-within {
+  z-index: 6;
+}
+
+.press-group:hover .press-outlet,
+.press-group:focus-within .press-outlet {
+  visibility: hidden;
+}
+
+.press-sublist {
+  display: none;
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  z-index: 5;
+  margin: 0;
+  padding: 0 0 12px;
+  list-style: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 12rem;
+  background: #08080c;
+}
+
+.press-sublist li {
+  list-style: none;
+  text-align: right;
+}
+
+.press-group:hover .press-sublist,
+.press-group:focus-within .press-sublist {
+  display: flex;
+}
+
+.press-sublist a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-style: italic;
+  color: rgba(232, 232, 244, 0.82);
+  text-decoration: none;
+}
+
+.press-sublist a::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: translateY(1px) rotate(45deg);
+  opacity: 0.55;
+}
+
+.press-sublist a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 720px) {
+  .press-row {
+    grid-template-columns: 3.5rem 1fr;
+    gap: 6px 14px;
+    padding: 16px 4px;
+  }
+
+  .press-outlet {
+    grid-column: 2;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .press-title {
+    font-size: 14px;
+  }
+
+  .press-sublist {
+    top: auto;
+    right: auto;
+    left: calc(3.5rem + 18px);
+    align-items: flex-start;
+  }
+
+  .press-sublist li,
+  .press-sublist a {
+    text-align: left;
+    justify-content: flex-start;
+  }
 }
 

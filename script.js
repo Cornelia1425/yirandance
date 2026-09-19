@@ -12,7 +12,7 @@ if (canvas && viewport) {
   scene.fog = null;
 
   /** Orthographic + symmetric diagonal view ≈ classic isometric / 轴测图 (no perspective convergence). */
-  const FRUSTUM_SIZE = 8.35;
+  const FRUSTUM_SIZE = 9.6;
   const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 220);
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
@@ -40,12 +40,12 @@ if (canvas && viewport) {
 
   /**
    * Reference stack: bottom-left = closest to camera; recedes toward top-right.
-   * Heavy overlap: stepX << plane width (~2.3) so each card mostly hides the next.
+   * Step is large enough that each folder edge reads, without losing the pile.
    */
-  /** 悬停：当前片只抬 Y；其余片沿堆叠方向挪开，留出空隙。 */
-  const HOVER_LIFT_Y = 0.62;
+  /** 悬停：当前片只抬 Y；其余片沿堆叠切线平移，留出空隙。 */
+  const HOVER_LIFT_Y = 0.72;
   /** 非悬停卡片沿堆叠切线平移，使与悬停片间距略增（悬停片本身不侧移）。 */
-  const HOVER_PEER_SHIFT = 0.11;
+  const HOVER_PEER_SHIFT = 0.18;
   /** 划过时用浮点「焦点」在相邻索引间插值，前后片分离会连续过渡。 */
   const FOCUS_INDEX_LERP = 0.26;
   const SPREAD_ALPHA_IN = 0.22;
@@ -60,9 +60,9 @@ if (canvas && viewport) {
     startX: -1.22,
     startY: -0.62,
     startZ: 0.92,
-    stepX: 0.38,
-    stepY: 0.28,
-    stepZ: -0.36,
+    stepX: 0.72,
+    stepY: 0.52,
+    stepZ: -0.68,
     rotZ0: -0.028,
     rotZStep: 0.004,
   };
@@ -80,30 +80,34 @@ if (canvas && viewport) {
         colorA: "#d2c0a5",
         colorB: "#514637",
         url: "about.html",
-      },
-      {
-        title: "Choreography",
-        subtitle: "works + process",
-        archive: "Archive 02",
-        colorA: "#b6ced6",
-        colorB: "#2b3f4b",
-        url: "choreography.html",
-      },
-      {
-        title: "Modeling",
-        subtitle: "editorial + campaign",
-        archive: "Archive 03",
-        colorA: "#d0b49b",
-        colorB: "#4c3428",
-        url: "modeling.html",
+        image: "images/archive/about.jpg",
       },
       {
         title: "Dance Film",
         subtitle: "A Quiet Longing",
-        archive: "Archive 04",
+        archive: "Archive 02",
         colorA: "#d8344f",
         colorB: "#3d121f",
         url: "dance-film.html",
+        image: "images/dancefilm/a-quiet-longing/longing1.png",
+      },
+      {
+        title: "Choreography",
+        subtitle: "works + process",
+        archive: "Archive 03",
+        colorA: "#b6ced6",
+        colorB: "#2b3f4b",
+        url: "choreography.html",
+        image: "images/archive/choreography.jpg",
+      },
+      {
+        title: "Modeling",
+        subtitle: "editorial + campaign",
+        archive: "Archive 04",
+        colorA: "#d0b49b",
+        colorB: "#4c3428",
+        url: "modeling.html",
+        image: "images/modeling/modeling1.jpg",
       },
       {
         title: "Acting",
@@ -112,14 +116,25 @@ if (canvas && viewport) {
         colorA: "#9ca9c3",
         colorB: "#2d374a",
         url: "acting.html",
+        image: "images/archive/acting.jpg",
+      },
+      {
+        title: "Press",
+        subtitle: "features + coverage",
+        archive: "Archive 06",
+        colorA: "#d8d0c4",
+        colorB: "#3a342c",
+        url: "press.html",
+        image: "images/archive/press.jpg",
       },
       {
         title: "Contact",
         subtitle: "message & inquiries",
-        archive: "Archive 06",
+        archive: "Archive 07",
         colorA: "#c4bcd4",
         colorB: "#2a2638",
         url: "contact.html",
+        image: "images/archive/contact.jpg",
       },
     ],
     "dance-film": [
@@ -130,22 +145,25 @@ if (canvas && viewport) {
         colorA: "#d8344f",
         colorB: "#3d121f",
         url: "a-quiet-longing.html",
+        image: "images/dancefilm/a-quiet-longing/longing1.png",
       },
       {
-        title: "Careless",
+        title: "Within",
         subtitle: "dance film",
         archive: "Archive 02",
         colorA: "#6b8cae",
         colorB: "#1e2c38",
-        url: "careless.html",
+        url: "within.html",
+        image: "images/dancefilm/within/within1.jpg",
       },
       {
-        title: "The River",
+        title: "River",
         subtitle: "dance film",
         archive: "Archive 03",
         colorA: "#4a7d8c",
         colorB: "#1a3036",
         url: "the-river.html",
+        image: "images/dancefilm/theriver/1_10.jpg",
       },
     ],
   };
@@ -180,13 +198,21 @@ if (canvas && viewport) {
 
   keyLight.position.copy(stackCenter).add(new THREE.Vector3(6.5, 8.0, 5.5));
 
-  function makeTexture(item) {
-    const cvs = document.createElement("canvas");
-    cvs.width = 1024;
-    cvs.height = 1280;
-    const ctx = cvs.getContext("2d");
-    if (!ctx) return new THREE.CanvasTexture(cvs);
+  function paintLabels(ctx, item, cvs) {
+    ctx.fillStyle = "rgba(20,20,25,0.62)";
+    ctx.fillRect(0, cvs.height - 300, cvs.width, 300);
 
+    ctx.fillStyle = "rgba(236,236,246,0.9)";
+    ctx.font = "500 34px Arial";
+    ctx.letterSpacing = "2px";
+    ctx.fillText(item.archive.toUpperCase(), 64, cvs.height - 220);
+    ctx.font = "700 78px Arial";
+    ctx.fillText(item.title.toUpperCase(), 64, cvs.height - 126);
+    ctx.font = "500 30px Arial";
+    ctx.fillText(item.subtitle.toUpperCase(), 64, cvs.height - 72);
+  }
+
+  function paintFallback(ctx, item, cvs) {
     const grad = ctx.createLinearGradient(0, 0, cvs.width, cvs.height);
     grad.addColorStop(0, item.colorA);
     grad.addColorStop(1, item.colorB);
@@ -212,22 +238,41 @@ if (canvas && viewport) {
       ctx.lineTo(x, cvs.height);
       ctx.stroke();
     }
-
     ctx.globalAlpha = 1;
-    ctx.fillStyle = "rgba(20,20,25,0.65)";
-    ctx.fillRect(0, cvs.height - 300, cvs.width, 300);
+  }
 
-    ctx.fillStyle = "rgba(236,236,246,0.9)";
-    ctx.font = "500 34px Arial";
-    ctx.letterSpacing = "2px";
-    ctx.fillText(item.archive.toUpperCase(), 64, cvs.height - 220);
-    ctx.font = "700 78px Arial";
-    ctx.fillText(item.title.toUpperCase(), 64, cvs.height - 126);
-    ctx.font = "500 30px Arial";
-    ctx.fillText(item.subtitle.toUpperCase(), 64, cvs.height - 72);
+  function drawCover(ctx, img, w, h) {
+    const scale = Math.max(w / img.width, h / img.height);
+    const dw = img.width * scale;
+    const dh = img.height * scale;
+    ctx.drawImage(img, (w - dw) / 2, (h - dh) / 2, dw, dh);
+  }
+
+  function makeTexture(item) {
+    const cvs = document.createElement("canvas");
+    cvs.width = 1024;
+    cvs.height = 1280;
+    const ctx = cvs.getContext("2d");
+    if (!ctx) return new THREE.CanvasTexture(cvs);
+
+    paintFallback(ctx, item, cvs);
+    paintLabels(ctx, item, cvs);
 
     const texture = new THREE.CanvasTexture(cvs);
     texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+    if (item.image) {
+      const img = new Image();
+      img.onload = () => {
+        ctx.clearRect(0, 0, cvs.width, cvs.height);
+        drawCover(ctx, img, cvs.width, cvs.height);
+        paintLabels(ctx, item, cvs);
+        texture.needsUpdate = true;
+      };
+      img.onerror = () => {};
+      img.src = item.image;
+    }
+
     return texture;
   }
 
@@ -392,7 +437,6 @@ if (canvas && viewport) {
         const i = Number(el.dataset.stackIndex);
         const active = i === titleIdx && titleIdx >= 0;
         el.classList.toggle("archive-titles__part--active", active);
-        el.style.opacity = active ? "1" : "0.5";
       });
     }
 

@@ -116,7 +116,7 @@ if (canvas && viewport) {
         colorA: "#9ca9c3",
         colorB: "#2d374a",
         url: "acting.html",
-        image: "images/archive/acting.jpg",
+        image: "images/archive/acting.jpg?v=2",
       },
       {
         title: "Press",

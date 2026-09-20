@@ -402,6 +402,15 @@ a {
   border-radius: 0;
 }
 
+.subpage-block + .subpage-block.subpage-block--acting-reel {
+  margin-top: 96px;
+}
+
+.subpage-block--acting-reel p {
+  max-width: 560px;
+  margin: 0 auto 28px;
+}
+
 /* Dance film — homepage-style reel cards */
 .subpage-inner--film-cards {
   max-width: 980px;
@@ -879,12 +888,110 @@ a.film-card--link .film-card__title {
   -webkit-overflow-scrolling: touch;
 }
 
-.subpage-photo-strip img {
+.subpage-photo-strip > img,
+.subpage-photo-strip figure {
   flex: 0 0 clamp(220px, 36vw, 460px);
+  width: clamp(220px, 36vw, 460px);
+  min-width: clamp(220px, 36vw, 460px);
+  max-width: clamp(220px, 36vw, 460px);
+  scroll-snap-align: start;
+}
+
+.subpage-photo-strip > img,
+.subpage-photo-strip figure img {
+  width: 100%;
   height: clamp(300px, 62vh, 700px);
   object-fit: cover;
   display: block;
-  scroll-snap-align: start;
+}
+
+.subpage-photo-strip:has(figure) {
+  padding-bottom: 18px;
+  align-items: flex-start;
+}
+
+.subpage-photo-strip figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.subpage-photo-strip figure img {
+  height: clamp(280px, 56vh, 640px);
+}
+
+.subpage-photo-strip figcaption {
+  margin-top: 10px;
+  padding: 0 8px 6px;
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  color: #8e8e9c;
+  text-align: center;
+}
+
+.subpage-inner--violin {
+  max-width: min(94vw, 920px);
+  text-align: center;
+}
+
+.violin-role {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35em;
+}
+
+.violin-role__title {
+  color: #d4d4de;
+}
+
+.violin-role__org {
+  color: #8a8a96;
+}
+
+.violin-photos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  width: 100%;
+  margin: 8px auto 28px;
+}
+
+.violin-photos__item {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.violin-photos__item img {
+  width: 100%;
+  height: auto;
+  max-height: min(52vh, 520px);
+  object-fit: contain;
+  display: block;
+  background: #08080c;
+}
+
+.violin-photos__item figcaption {
+  margin-top: 16px;
+  max-width: 36em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0.03em;
+  color: #a8a8b4;
+  text-align: center;
+}
+
+.violin-photos__date {
+  color: #7a7a86;
+  font-size: 16px;
 }
 
 .subpage-photo-strip--contain {

@@ -101,22 +101,22 @@ if (canvas && viewport) {
         image: "images/archive/choreography.jpg",
       },
       {
-        title: "Modeling",
-        subtitle: "editorial + campaign",
+        title: "Modeling/Acting",
+        subtitle: "editorial + film",
         archive: "Archive 04",
         colorA: "#d0b49b",
         colorB: "#4c3428",
-        url: "modeling.html",
+        url: "modeling-acting.html",
         image: "images/modeling/modeling1.jpg",
       },
       {
-        title: "Acting",
-        subtitle: "film + theatre",
+        title: "Violin",
+        subtitle: "associate principal",
         archive: "Archive 05",
-        colorA: "#9ca9c3",
-        colorB: "#2d374a",
-        url: "acting.html",
-        image: "images/archive/acting.jpg?v=2",
+        colorA: "#c4a574",
+        colorB: "#2c2218",
+        url: "violin.html",
+        image: "images/violin/CarnegieHall.JPG",
       },
       {
         title: "Press",
@@ -206,8 +206,15 @@ if (canvas && viewport) {
     ctx.font = "500 34px Arial";
     ctx.letterSpacing = "2px";
     ctx.fillText(item.archive.toUpperCase(), 64, cvs.height - 220);
-    ctx.font = "700 78px Arial";
-    ctx.fillText(item.title.toUpperCase(), 64, cvs.height - 126);
+    const title = item.title.toUpperCase();
+    let titleSize = 78;
+    ctx.font = `700 ${titleSize}px Arial`;
+    const maxTitleW = cvs.width - 128;
+    while (titleSize > 40 && ctx.measureText(title).width > maxTitleW) {
+      titleSize -= 2;
+      ctx.font = `700 ${titleSize}px Arial`;
+    }
+    ctx.fillText(title, 64, cvs.height - 126);
     ctx.font = "500 30px Arial";
     ctx.fillText(item.subtitle.toUpperCase(), 64, cvs.height - 72);
   }

@@ -935,17 +935,17 @@ a.film-card--link .film-card__title {
 }
 
 .subpage-photo-strip figcaption {
-  margin-top: 10px;
+  margin-top: 8px;
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: 0.2em;
   font-size: 15px;
   line-height: 1.45;
   letter-spacing: 0.04em;
   color: #8e8e9c;
-  text-align: left;
+  text-align: right;
 }
 
 .violin-photos__date {

@@ -411,6 +411,49 @@ a {
   margin: 0 auto 28px;
 }
 
+.cineasian-link {
+  position: relative;
+  display: block;
+  width: min(96vw, 1320px);
+  margin-left: calc(50% - min(48vw, 660px));
+  margin-right: calc(50% - min(48vw, 660px));
+  overflow: hidden;
+}
+
+.cineasian-link img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cineasian-link__hint {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 16px 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.12) 42%, transparent 70%);
+  color: #ececf4;
+  font-size: clamp(13px, 1.4vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.3;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+}
+
+.cineasian-link:hover .cineasian-link__hint,
+.cineasian-link:focus-visible .cineasian-link__hint {
+  opacity: 1;
+}
+
 /* Dance film — homepage-style reel cards */
 .subpage-inner--film-cards {
   max-width: 980px;

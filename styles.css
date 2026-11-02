@@ -205,6 +205,22 @@ a {
   border-radius: 14px;
 }
 
+.archive-page:has(.dance-film-honors) .archive-viewport {
+  flex: 1 0 auto;
+  min-height: 68vh;
+}
+
+.dance-film-honors {
+  max-width: 560px;
+  width: 100%;
+  margin: 10px auto 8px;
+}
+
+.dance-film-honors .film-subtitle a {
+  color: inherit;
+  text-decoration: none;
+}
+
 #archiveCanvas {
   width: 100%;
   height: 100%;
@@ -651,6 +667,52 @@ a.film-card--link .film-card__title {
 
 .subpage-inner--film-detail.subpage-inner--film-hero {
   max-width: min(96vw, 1320px);
+}
+
+.film-honors .film-subtitle {
+  font-size: 22px;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: #c8c8d6;
+  margin-bottom: 28px;
+}
+
+.film-honors h3,
+.film-crew-heading {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #f2f2f8;
+  margin: 26px 0 6px;
+}
+
+.film-honors h3:first-of-type {
+  margin-top: 0;
+}
+
+.film-crew-heading {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.film-honors ul {
+  list-style: none;
+}
+
+.film-honors li {
+  font-size: 22px;
+  line-height: 1.5;
+  color: #c8c8d6;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.film-honors strong {
+  font-weight: 600;
+  color: #f5f5f5;
 }
 
 .film-awards .meta-line {

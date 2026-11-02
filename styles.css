@@ -1130,6 +1130,17 @@ a.film-card--link .film-card__title {
   padding-top: 20px;
 }
 
+.subpage-inner--press .press-page-title {
+  text-align: center;
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: none;
+  color: #f2f2f8;
+  margin: 0 0 36px;
+}
+
 .press-list {
   display: flex;
   flex-direction: column;

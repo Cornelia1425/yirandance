@@ -665,9 +665,70 @@ a.film-card--link .film-card__title {
   margin-right: auto;
 }
 
+.subpage-inner--choreography {
+  max-width: min(96vw, 980px);
+  text-align: justify;
+}
+
+.subpage-inner--film-hero.subpage-inner--choreography > .subpage-block:not(.subpage-block--hero-video) {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.subpage-inner--choreography h2,
+.subpage-inner--choreography p,
+.subpage-inner--choreography .meta-line {
+  text-align: justify;
+}
+
+.subpage-inner--choreography > .subpage-block:not(.subpage-block--hero-video) p {
+  font-size: clamp(16px, 1.7vw, 19px);
+  font-weight: 400;
+  line-height: 1.55;
+  color: #9a9aa8;
+}
+
+.subpage-inner--choreography h2 {
+  font-size: clamp(13px, 1.4vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #f4f4f8;
+  margin-bottom: 18px;
+}
+
+.subpage-inner--choreography p.meta-line {
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #e6e6ee;
+}
+
+.subpage-inner--choreography .work-copy p {
+  font-size: clamp(15px, 1.55vw, 17px);
+  font-weight: 400;
+  line-height: 1.7;
+  color: #9c9ca8;
+}
+
+.subpage-inner--choreography .subpage-block--hero-video .video-frame {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.sweet-tooth-block {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 32px;
+  box-sizing: border-box;
+}
+
 .work-copy {
-  max-width: 560px;
-  margin: 0 auto 22px;
+  width: 100%;
+  max-width: none;
+  margin: 0 0 22px;
+  text-align: justify;
 }
 
 .work-copy p + p {
@@ -685,8 +746,8 @@ a.film-card--link .film-card__title {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 6px;
   width: 100%;
-  max-width: min(96vw, 980px);
-  margin: 8px auto 32px;
+  max-width: none;
+  margin: 8px 0 0;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -701,6 +762,12 @@ a.film-card--link .film-card__title {
 
 .choreography-board__feature {
   grid-column: 1 / -1;
+}
+
+.choreography-board img.choreography-board__pair {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .subpage-inner--film-detail.subpage-inner--film-hero {

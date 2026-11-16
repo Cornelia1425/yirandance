@@ -665,6 +665,44 @@ a.film-card--link .film-card__title {
   margin-right: auto;
 }
 
+.work-copy {
+  max-width: 560px;
+  margin: 0 auto 22px;
+}
+
+.work-copy p + p {
+  margin-top: 1em;
+}
+
+.work-copy a,
+.subpage-block--hero-video .meta-line a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.choreography-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6px;
+  width: 100%;
+  max-width: min(96vw, 980px);
+  margin: 8px auto 32px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.choreography-board img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.choreography-board__feature {
+  grid-column: 1 / -1;
+}
+
 .subpage-inner--film-detail.subpage-inner--film-hero {
   max-width: min(96vw, 1320px);
 }
@@ -1093,12 +1131,24 @@ a.film-card--link .film-card__title {
   text-align: center;
 }
 
-.violin-role {
+.subpage-inner p.violin-role {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 0.35em;
+  width: 100%;
+  max-width: 100%;
+  font-size: clamp(11px, 3.7vw, 24px);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+.violin-role__title,
+.violin-role__org {
+  display: block;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .violin-role__title {

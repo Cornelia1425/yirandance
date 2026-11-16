@@ -711,6 +711,13 @@ a.film-card--link .film-card__title {
   color: #9c9ca8;
 }
 
+@media (max-width: 900px) {
+  .subpage-inner--choreography h2,
+  .subpage-inner--choreography p.meta-line {
+    text-align: left;
+  }
+}
+
 .subpage-inner--choreography .subpage-block--hero-video .video-frame {
   width: 100%;
   margin-left: 0;

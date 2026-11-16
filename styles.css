@@ -744,7 +744,8 @@ a.film-card--link .film-card__title {
 .choreography-board {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 6px;
+  column-gap: 20px;
+  row-gap: 20px;
   width: 100%;
   max-width: none;
   margin: 8px 0 0;
@@ -757,7 +758,9 @@ a.film-card--link .film-card__title {
   max-width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .choreography-board__feature {
@@ -768,6 +771,18 @@ a.film-card--link .film-card__title {
   aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: center center;
+}
+
+.choreography-board--bts {
+  margin-top: 20px;
+}
+
+.choreography-board--bts img {
+  aspect-ratio: 3 / 2;
+}
+
+.choreography-board--bts img.choreography-board__pair {
+  aspect-ratio: 3 / 2;
 }
 
 .subpage-inner--film-detail.subpage-inner--film-hero {
